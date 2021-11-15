@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}" lang="pt">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<section layout:fragment="titulo">
+		<div class="row align-items-md-stretch">
+			<div class="col-md-12">
+				<div class="h-100 p-5 text-white bg-dark rounded-3">
+					<h2>Cadastro de Vacinas</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section layout:fragment="content">
+
+		<div class="container-fluid">
+			<form th:action="@{/vacinas}" method="post" th:object="${vacina}">
+			
+				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+			  		<span  th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}">Registro gravado com sucesso...</span>
+				</div>
+				
+				<input type="hidden" th:field="*{id}">
+				<div class="form-group">
+					<label for="txt-descricao">Descrição</label> 
+					<input type="text"
+						   class="form-control md-12 col-12"
+						   th:field="*{descricao}" 
+						   autocomplete="true" 
+						   />
+					</div>
+				<div class="form-group">
+					<label for="txt-tipo">Tipo de Vacina</label> 
+					<select class="form-control col-md-4" th:field="*{tipoVacina}">
+						<option th:each="tipo: ${tipos}" th:text="${tipo.descricao}" th:value="${tipo.id}">is</option>
+					</select>
+					</div>
+				<div class="form-group">
+					<input  type="submit" 
+							class="btn btn-success" 
+							value="Salvar">
+					<a th:href="@{/vacinas}" 
+							class="btn btn-danger">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

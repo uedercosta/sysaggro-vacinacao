@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>SysAgro</title>
+
+    <!-- using online links -->
+    <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">
+
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/5.15.4/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/sidebar-themes.css}" />
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
+</head>
+
+<body>
+    <body>
+    <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-item sidebar-brand">
+                    <a th:href="@{/home}">SysAgro</a>
+                </div>
+                <div class="sidebar-item sidebar-header d-flex flex-nowrap">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" th:src="@{/img/user.jpg}" alt="User picture">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Jhon
+                            <strong>Smith</strong>
+                        </span>
+                        <span class="user-role">Administrator</span>
+                        <span class="user-status">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <div class=" sidebar-item sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>Cadastros</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                               <i class="far fa-keyboard"></i>
+                                <span class="menu-text">Dados Bases</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a th:href="@{/proprietarios}">Proprietários</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/fazendas}">Fazendas</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/funcionarios}">Funcionários</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-paw"></i>
+                                <span class="menu-text">Animais</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a th:href="@{/animais}">Animais</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/racas}">Raças</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-syringe"></i>
+                                <span class="menu-text">Vacinas</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a th:href="@{/tipos-vacina}">Tipo de Vacinas</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/vacinas}">Vacinas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-menu">
+                            <span>Vacinação</span>
+                        </li>
+                        <li>
+                            <a th:href="@{/lanca-vacinas}">
+                                <i class="fas fa-mortar-pestle"></i>
+                                <span class="menu-text">Lançar Vacinas por Animal</span>
+<!--                                 <span class="badge badge-pill badge-primary">Beta</span> -->
+                            </a>
+                        </li>
+                        <li class="header-menu">
+                            <span>Movimentação</span>
+                        </li>
+                        <li>
+                            <a th:href="@{/movimenta-animais}">
+                                <i class="fa fa-book"></i>
+                                <span class="menu-text">Mov. Entre Fazendas</span>
+                            </a>
+                        </li>
+                        <li class="header-menu">
+                            <span>Usuários</span>
+                        </li>
+                        <li>
+                            <a th:href="@{/usuarios}">
+                                <i class="fas fa-users"></i>
+                                <span class="menu-text">Cadastro</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main class="page-content pt-1">
+            <div id="overlay" class="overlay"></div>
+            <div class="container-fluid p-3">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <section layout:fragment="titulo">
+	                        <h2>SysAgro - Sistema de controle de vacinação de animais</h2>
+	                        <p>This is a responsive sidebar template with dropdown menu based on bootstrap framework.</p>
+                        </section>
+                    </div>
+                </div>
+                <hr>
+                <section class="row" >
+                    <div class="form-group col-md-12" layout:fragment="content">
+                    	O conteudo vai aqui
+                    </div>
+                </section>
+                <hr>
+<!--                 <div class="row"> -->
+<!--                     <div class="form-group col-md-9 footer"> -->
+<!--                     	&copy SysAgro - Sistema de Gestão Agropecuário -->
+<!--                     </div> -->
+<!--                </div> -->
+            </div>
+        </main>
+    </div>
+    
+ 
+	<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/4.6.1/js/bootstrap.min.js}"></script>
+	<script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<!-- 	<script th:src="@{js/chart.js}"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript">
+		$("#telefone").mask("(00) 0000-00009");
+		$("#cpf").mask("000.000.000-00");
+	</script>
+    <section layout:fragment="script">
+    
+    </section>
+</body>
+
+</html>
