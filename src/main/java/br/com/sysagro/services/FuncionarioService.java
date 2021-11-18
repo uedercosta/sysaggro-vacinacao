@@ -15,7 +15,7 @@ public class FuncionarioService {
 	private FuncionarioRepository repository;
 	
 	public List<Funcionario> getFuncionarios(String nome) {
-		return nome.isEmpty() ? repository.findByNomeContainingOrderById(nome.toUpperCase()) : 
+		return !nome.isEmpty() ? repository.findByNomeContainingOrderById("%"+nome.toUpperCase()+"%") : 
 								repository.findAll();
 		
 	}

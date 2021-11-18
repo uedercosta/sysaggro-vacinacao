@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.sysagro.models.enums.Estado;
 import br.com.sysagro.models.enums.Sexo;
+import br.com.sysagro.models.enums.StatusAnimal;
 
 @Service
 public class UtilService {
@@ -18,5 +19,9 @@ public class UtilService {
 	
 	public List<Sexo> getSexos(){
 		return Arrays.asList(Sexo.values());
+	}
+	
+	public List<StatusAnimal> getStatus(){
+		return Arrays.asList(StatusAnimal.values());
 	}
 }

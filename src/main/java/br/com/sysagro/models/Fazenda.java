@@ -13,10 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import br.com.sysagro.util.Constantes;
 
 @Entity
 @Table(name = "FAZENDAS")
@@ -28,7 +25,7 @@ public class Fazenda implements Serializable{
 	private Long id;
 	
 	@Column(length = 100, nullable = false)
-	@NotBlank
+	@NotBlank(message = Constantes.CAMPO_NOME_FAZENDA_OBRIGATORIO)
 	private String nome;
 
 	@ManyToOne(optional = false)
@@ -56,7 +53,7 @@ public class Fazenda implements Serializable{
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase();
 	}
 
 	public Proprietario getProprietario() {
@@ -88,7 +85,7 @@ public class Fazenda implements Serializable{
 	}
 
 	public void setObservacoes(String observacoes) {
-		this.observacoes = observacoes;
+		this.observacoes = observacoes.toUpperCase();
 	}
 
 	@Override

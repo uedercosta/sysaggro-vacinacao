@@ -51,14 +51,14 @@ public class Endereco {
 		this.numero = numero.toUpperCase();
 	}
 
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+	
 	public String getComplemento() {
 		return complemento;
 	}
-
-	public void setComplemento(String complemento) {
-		this.complemento = complemento.toUpperCase();
-	}
-
+	
 	public String getBairro() {
 		return bairro;
 	}
@@ -82,7 +82,12 @@ public class Endereco {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Endereco [logradouro=" + logradouro + ", numero=" + numero + ", complemento=" + complemento
+				+ ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + "]";
+	}
 	
 
 }

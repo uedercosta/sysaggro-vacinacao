@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}" lang="pt">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<section layout:fragment="titulo">
+		<div class="row align-items-md-stretch">
+			<div class="col-md-12">
+				<div class="h-100 p-5 text-white bg-dark rounded-3">
+					<h2>Cadastro de Animais</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section layout:fragment="content">
+
+		<div class="container-fluid">
+			<form th:action="@{/animais}" method="post" th:object="${animal}">
+
+				<div class="alert alert-danger" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<span th:each="err : ${#fields.detailedErrors()}"
+						th:text="${err.message}">Registro gravado com sucesso...</span>
+				</div>
+
+				<input type="hidden" th:field="*{id}">
+				<div class="row">
+					<div class="form-group col-2 md-2">
+						<label>N. Brinco</label> <input type="text" class="form-control" />
+					</div>
+					<div class="form-group col-8 md-8">
+						<label>Nome</label> <input type="text" class="form-control" />
+					</div>
+					<div class="form-group col-2 md-2">
+						<label>Status</label> <select class="form-control"
+							th:field="*{status}">
+							<option th:each="st : ${status}" th:text="${st.descricao}"
+								th:value="${st}" />
+						</select>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-6 md-6">
+						<label>Raça</label> 
+						<select class="form-control" th:field="*{raca}">
+							<option th:each="raca : ${racas}" th:text="${raca.descricao}" th:value="${raca.id}" />
+						</select>
+					</div>
+					<div class="form-group col-3 md-3">
+						<label>Data Nasc.</label> 
+						<input type="date" th:field="*{dataNascimento}" class="form-control"/> 
+					</div>
+					<div class="form-group col-3 md-3">
+						<label>Sexo</label> 
+						<select class="form-control" th:field="*{sexo}">
+							<option th:each="sx : ${sexos}" th:text="${sx.descricao}" th:value="${sx}" />
+						</select>
+					</div>
+				</div>
+
+				<!-- Nav pills -->
+				<ul class="nav nav-pills nav-justified" role="tablist">
+					<li class="nav-item"><a class="nav-link active"
+						data-toggle="pill" href="#filiacao">Filiação</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" data-toggle="pill"
+						href="#contact">Proprietário/Fazenda</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" data-toggle="pill"
+						href="#obs">Observações</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div id="filiacao" class="container tab-pane active">
+						<div class="card mt-2">
+							<div class="card-header">Filiação</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="form-group col-6 md-6">
+										<label>Pai</label> 
+										<select class="form-control" th:field="*{status}">
+											<option th:each="st : ${status}" th:text="${st.descricao}" th:value="${st}" />
+										</select>
+									</div>
+									<div class="form-group col-6 md-6">
+										<label>Mãe</label> 
+										<select class="form-control" th:field="*{status}">
+											<option th:each="st : ${status}" th:text="${st.descricao}" th:value="${st}" />
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>					
+					</div>
+					<div id="contact" class="container tab-pane fade">
+						<div class="row mt-2">
+							<div class="form-group col-6 md-6">
+								<label>Proprietário</label> 
+								<select class="form-control" th:field="*{proprietario}">
+									<option th:each="prop : ${proprietarios}" th:text="${prop.nome}" th:value="${prop.id}" />
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-6 md-6">
+								<label>Fazenda</label> 
+								<select class="form-control" th:field="*{fazenda}">
+									<option th:each="faz : ${fazendas}" th:text="${faz.nome}" th:value="${faz.id}" />
+								</select>
+							</div>
+						</div>
+					</div>
+					<div id="obs" class="container tab-pane fade">
+						<textarea th:field="*{observacoes}" rows="4" class="form-control mt-2"></textarea>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group mt-2">
+						<input type="submit" class="btn btn-success" value="Salvar">
+						<a th:href="@{/animais}" class="btn btn-danger">Cancelar</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

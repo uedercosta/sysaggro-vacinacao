@@ -19,5 +19,7 @@ public interface Constantes {
 	String CAMPO_BAIRRO_OBRIGATORIO = "O campo BAIRRO deve ser informado";
 	String CAMPO_CIDADE_OBRIGATORIO = "O campo CIDADE deve ser informado";
 	String CPF_INVALIDO = "O CPF informado é inválido";
+	String EMAIL_INVALIDO = "O E-MAIL informado é inválido";
+	String CAMPO_NOME_FAZENDA_OBRIGATORIO = "O campo NOME DA FAZENDA deve ser informado";
 
 }

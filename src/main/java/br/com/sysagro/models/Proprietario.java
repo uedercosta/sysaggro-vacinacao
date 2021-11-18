@@ -29,16 +29,19 @@ public class Proprietario implements Serializable{
 	@NotBlank(message = Constantes.CAMPO_NOME_OBRIGATORIO)
 	private String nome;
 
-	@CPF
+	@CPF(message=Constantes.CPF_INVALIDO)
 	@Column(length = 14, nullable = false)
 	@NotBlank(message = Constantes.CAMPO_CPF_OBRIGATORIO)
 	private String cpf;
 	
 	@Column(length = 20)
+	private String rg;
+	
+	@Column(length = 20)
 	private String telefone;
 	
 	@Column(length = 255, nullable = false)
-	@Email
+	@Email(message=Constantes.EMAIL_INVALIDO)
 	@NotBlank(message = Constantes.CAMPO_EMAIL_OBRIGATORIO)
 	private String email;
 	
@@ -99,6 +102,14 @@ public class Proprietario implements Serializable{
 	public String getObservacoes() {
 		return observacoes;
 	}
+	
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+	
+	public String getRg() {
+		return rg;
+	}
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes.toUpperCase();
@@ -129,11 +140,11 @@ public class Proprietario implements Serializable{
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Proprietario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email="
-				+ email + ", endereco=" + endereco + ", observacoes=" + observacoes + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Proprietario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email="
+//				+ email + ", endereco=" + endereco + ", observacoes=" + observacoes + "]";
+//	}
 	
 	
 }
