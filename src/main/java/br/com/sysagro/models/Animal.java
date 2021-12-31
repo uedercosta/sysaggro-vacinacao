@@ -13,9 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import br.com.sysagro.models.enums.Sexo;
 import br.com.sysagro.models.enums.StatusAnimal;
@@ -36,24 +36,18 @@ public class Animal implements Serializable {
 	private String nome;
 
 	@ManyToOne(optional = false)
-	@NotBlank(message = Constantes.CAMPO_RACA_OBRIGATORIO)
+	@NotNull(message = Constantes.CAMPO_RACA_OBRIGATORIO)
 	private Raca raca;
 
 	@ManyToOne(optional = false)
-	@NotBlank(message = Constantes.CAMPO_PROPRIETARIO_OBRIGATORIO)
-	private Proprietario proprietario;
-
-	@ManyToOne(optional = false)
-	@NotBlank(message = Constantes.CAMPO_FAZENDA_OBRIGATORIO)
+	@NotNull(message = Constantes.CAMPO_FAZENDA_OBRIGATORIO)
 	private Fazenda fazenda;
 
 	@Enumerated(EnumType.STRING)
-	@NotBlank(message = Constantes.CAMPO_SEXO_OBRIGATORIO)
-	private Sexo sexo;
+	@Column(length = 1)
+	private Sexo sexo = Sexo.M;
 
-	@DateTimeFormat(iso = ISO.DATE, pattern = "yyyy-mm-dd")
-	@Column(nullable = false)
-	@NotBlank(message = Constantes.CAMPO_NASCIMENTO_OBRIGATORIO)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
 
 	@Column(length = 20, nullable = false)
@@ -68,7 +62,7 @@ public class Animal implements Serializable {
 
 	@Column(length = 800)
 	private String observacoes;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20, nullable = false)
 	private StatusAnimal status = StatusAnimal.ATIVO;
@@ -95,14 +89,6 @@ public class Animal implements Serializable {
 
 	public void setRaca(Raca raca) {
 		this.raca = raca;
-	}
-
-	public Proprietario getProprietario() {
-		return proprietario;
-	}
-
-	public void setProprietario(Proprietario proprietario) {
-		this.proprietario = proprietario;
 	}
 
 	public Fazenda getFazenda() {
@@ -160,20 +146,20 @@ public class Animal implements Serializable {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes.toUpperCase();
 	}
-	
+
 	public StatusAnimal getStatus() {
 		return status;
 	}
-	
+
 	public void setStatus(StatusAnimal status) {
 		this.status = status;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", nome=" + nome + ", raca=" + raca + ", proprietario=" + proprietario
-				+ ", fazenda=" + fazenda + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", brinco="
-				+ brinco + ", pai=" + pai + ", mae=" + mae + ", observacoes=" + observacoes + "]";
+		return "Animal [id=" + id + ", nome=" + nome + ", raca=" + raca + ", fazenda=" + fazenda + ", sexo=" + sexo
+				+ ", brinco=" + brinco + ", pai=" + pai + ", mae=" + mae + ", observacoes=" + observacoes + "]";
 	}
 
 	@Override

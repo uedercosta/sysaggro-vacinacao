@@ -1,8 +1,12 @@
 package br.com.sysagro.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,8 @@ import br.com.sysagro.repositories.TipoVacinaRepository;
 import br.com.sysagro.repositories.VacinaRepository;
 import br.com.sysagro.services.VacinaService;
 import br.com.sysagro.util.Constantes;
+import br.com.sysagro.util.ReportsUtil;
+import net.sf.jasperreports.engine.JRException;
 
 @RequestMapping("/vacinas")
 @Controller
@@ -34,6 +40,8 @@ public class VacinaController {
 	private VacinaService service;
 	@Autowired
 	private TipoVacinaRepository tiposRepository;
+	@Autowired
+	private ReportsUtil util;
 	
 	@GetMapping
 	public ModelAndView findAll(@Nullable Optional<String> txtPesquisa) {	
@@ -81,4 +89,16 @@ public class VacinaController {
 	public List<TipoVacina> getTiposVacina(){
 		return tiposRepository.findAll();
 	}
+		
+	@GetMapping("/print")
+	public void imprimir(@Nullable Optional<String> txtPesquisa, HttpServletResponse response) throws JRException, SQLException, IOException {
+		List<Vacina> vacinas = new ArrayList<Vacina>();
+		if (txtPesquisa.isPresent()) {
+			vacinas =  service.getVacinas(txtPesquisa.get().toUpperCase());
+		} else {
+			vacinas = service.getVacinas();
+		}
+		util.imprimir(response, vacinas, "reportVacinas");
+	}
+
 }

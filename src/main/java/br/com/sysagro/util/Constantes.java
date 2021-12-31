@@ -21,5 +21,12 @@ public interface Constantes {
 	String CPF_INVALIDO = "O CPF informado é inválido";
 	String EMAIL_INVALIDO = "O E-MAIL informado é inválido";
 	String CAMPO_NOME_FAZENDA_OBRIGATORIO = "O campo NOME DA FAZENDA deve ser informado";
+	String VACINACAO_CANCELADA_BLOQUEADA_EXCLUSAO = "A vacinação selecionada não pode ser EXCLUÍDA, pois já foi CANCELADA";
+	String VACINACAO_CONFIRMADA_BLOQUEADA_EXCLUSAO = "A vacinação selecionada não pode ser EXCLUÍDA, pois já foi FINALIZADA";
+	String VACINACAO_CANCELADA_BLOQUEADA_EDICAO = "A vacinação selecionada não pode ser ALTERADA, pois já foi CANCELADA";
+	String VACINACAO_CONFIRMADA_BLOQUEADA_EDICAO = "A vacinação selecionada não pode ser ALTERADA, pois já foi FINALIZADA";
+	String VACINACAO_BLOQUEADA = "A vacinação selecionada não pode ser ALTERADA ou EXCLUÍDA";
+	String CAMPO_LOGIN_OBRIGATORIO = "O campo LOGIN deve ser informado\n";
+	String CAMPO_SENHA_OBRIGATORIO = "O campo SENHA deve ser informado\n";
 
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}" lang="pt">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<section layout:fragment="titulo">
+		<div class="row align-items-md-stretch">
+			<div class="col-md-12">
+				<div class="h-100 p-5 text-white bg-dark rounded-3">
+					<h2>Transferência de Animais - Entre Fazendas</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section layout:fragment="content">
+
+		<div class="container-fluid">
+			<form th:action="@{/transferencias}" method="post" th:object="${transferencia}">
+
+				<div class="alert alert-danger" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<div th:each="err : ${#fields.detailedErrors()}">
+						<span th:text="${err.message}">...</span>
+					</div>
+				</div>
+				
+				<div th:if="${mensagem!=null}">
+					<div class="alert alert-danger" role="alert" >
+						<span th:text="${mensagem}">Nome do Usuário ou Senha inválidos...</span>
+					</div>
+				</div>
+			
+				<input type="hidden" th:field="*{id}">
+				<div class="row">
+					<div class="form-group col-12 md-12">
+						<label for="txt-descricao">Motivo da Transferência</label> 
+						<textarea rows="3" class="form-control md-12 col-12" th:field="*{motivo}">
+						</textarea>
+					</div>				
+				</div>
+				<div class="row">
+					<div class="form-group col-3 md-3">
+						<label>Data Movimentação</label>
+						<input type="date" th:field="*{data}" class="form-control"/>
+					</div>
+					<div class="form-group col-3 md-3">
+						<label>Status</label>
+						<input type="text" th:field="*{status.descricao}" readonly="readonly" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-6 md-6">
+						<label>Fazenda de Origem</label>
+						<select th:field="*{origem}" class="form-control">
+							<option th:each="origem : ${fazendas}" th:value="${origem.id}" th:text="${origem.nome}"/>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-6 md-6">
+						<label>Fazenda de Destino</label>
+						<select th:field="*{destino}" class="form-control">
+							<option th:each="destino : ${fazendas}" th:value="${destino.id}" th:text="${destino.nome}"/>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<input type="submit" class="btn btn-success" value="Salvar">
+					<a th:href="@{/transferencias}" class="btn btn-danger">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

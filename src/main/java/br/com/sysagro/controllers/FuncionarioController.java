@@ -1,8 +1,11 @@
 package br.com.sysagro.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,8 @@ import br.com.sysagro.repositories.FuncionarioRepository;
 import br.com.sysagro.services.FuncionarioService;
 import br.com.sysagro.services.UtilService;
 import br.com.sysagro.util.Constantes;
+import br.com.sysagro.util.ReportsUtil;
+import net.sf.jasperreports.engine.JRException;
 
 @RequestMapping("/funcionarios")
 @Controller
@@ -38,6 +43,8 @@ public class FuncionarioController {
 	private UtilService utilService;
 	@Autowired
 	private FazendaRepository fazendaRepository;
+	@Autowired
+	private ReportsUtil reportsUtil;
 	
 	@GetMapping
 	public ModelAndView findAll(@Nullable Optional<String> txtPesquisa) {	
@@ -89,5 +96,11 @@ public class FuncionarioController {
 		ModelAndView view = new ModelAndView("redirect:/funcionarios");
 		attr.addFlashAttribute("mensagem", Constantes.REGISTRO_EXCLUIDO_SUCESSO);
 		return view; 
+	}
+	
+	@GetMapping("print")
+	public void print(HttpServletResponse response,@Nullable Optional<String> txtPesquisa) throws JRException, SQLException, IOException {	
+		List<Funcionario> funcionarios = service.getFuncionariosImpressao(txtPesquisa.orElse(""));
+		reportsUtil.imprimir(response, funcionarios, "reportFuncionarios");
 	}
 }

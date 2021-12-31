@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportVacinas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4b0b469-5a95-4ef6-9166-2fe3e2ed5b79">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="tipoVacina" class="br.com.sysagro.models.TipoVacina">
+		<fieldDescription><![CDATA[tipoVacina]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[descricao]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="72" splitType="Stretch">
+			<rectangle radius="0">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="57" backcolor="#D3D3D3" uuid="1cea8c8f-6ea7-42d8-8c0e-c8feb0d871cc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="14" width="556" height="30" uuid="5d0855f0-dc3d-47c8-bce5-57076df25e8d"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relação de Vacinas Cadastradas]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="57" width="555" height="15" uuid="3a599d09-204e-4c21-8b6d-b086354b8260">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="57" width="100" height="14" uuid="4c11d831-b64f-460f-a643-08d2df29ccef"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="57" width="100" height="14" uuid="6a5a2fba-476e-43d1-92f5-d813a279df75"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="57" width="100" height="14" uuid="9c9cf4d2-779d-49cb-8829-8aa3e67b21b1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo da Vacina]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="15" uuid="239beba1-320c-4f3f-b262-9403680f3820"/>
+			</rectangle>
+			<textField>
+				<reportElement x="5" y="0" width="70" height="15" uuid="fc810d14-14a2-4eb6-b54c-1ed1ba12e266">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="0" width="314" height="15" uuid="78ffac71-0e74-45f9-949f-5cc73f1e40dd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="1" width="148" height="14" uuid="2f6cf6c2-f07b-4fb8-8860-c7bb332e20b2"/>
+				<textFieldExpression><![CDATA[$F{tipoVacina}.getDescricao()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="18" uuid="75a3f640-aaf6-47fd-8b77-fe2619e34e5e"/>
+			</rectangle>
+			<textField>
+				<reportElement x="-2" y="2" width="554" height="14" uuid="4310f673-94e4-40cf-b8f8-cce9bccd6d01"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="2" width="290" height="15" uuid="6e270637-0bbf-4378-aa34-3164d9f59c1d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[SysAgro - Sistema de Gestão de Agropecuária]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement x="370" y="2" width="183" height="15" uuid="74463a50-6ff5-4c9b-8ec4-c7f019645838">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Data/Hora: " + new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

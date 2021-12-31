@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}" lang="pt">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<section layout:fragment="titulo">
+		<div class="row align-items-md-stretch">
+			<div class="col-md-12">
+				<div class="h-100 p-5 text-white bg-dark rounded-3">
+					<h2>Lista de Animais Vacinados</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section layout:fragment="content">
+	<div class="container">
+
+	
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label>Descrição</label>
+				<input type="text" readonly="readonly"
+					class="form-control"
+					th:field="${vacinacao.descricao}">				
+			</div>
+
+			<div class="form-group col-md-2">
+				<label>Data da Vacinação</label>
+				<input type="text" readonly="readonly"
+					pattern="dd/MM/yyyy"
+					class="form-control"
+					th:field="${vacinacao.dataVacinacao}"/>				
+			</div>		
+			
+			<div class="form-group col-md-2">
+				<label>Ano</label>
+				<input type="text" readonly="readonly"
+					class="form-control"
+					th:field="${vacinacao.ano}"/>	
+			</div>		
+			
+			<div class="form-group col-md-2">
+				<label>Status da Vacinação</label>
+				<input type="text" readonly="readonly"
+					class="form-control"
+					th:field="${vacinacao.status.descricao}">		
+			</div>
+		
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label>Vacina</label>
+				<input type="text" readonly="readonly"
+					class="form-control"
+					th:field="${vacinacao.vacina.descricao}">
+			
+			</div>
+
+			<div class="form-group col-md-6">
+				<label>Fazenda</label>
+				<input type="text" readonly="readonly"
+					class="form-control"
+					th:field="${vacinacao.fazenda.nome}">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label></label>
+				<textarea readonly="readonly"
+					class="form-control"
+					rows="3"
+					th:field="${vacinacao.observacao}">
+				</textarea>
+			</div>
+		</div>
+		
+		<table class="table table-striped table-hover table-sm">
+		<thead>
+			<tr>
+				<th>Brinco</th>
+				<th>Nome do Animal</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr th:each="item : ${items}">
+				<td th:text="${item.animal.brinco}">Brinco</td>
+				<td th:text="${item.animal.nome}">Nome do Animal</td>
+			</tr>	
+		</tbody>
+	
+	</table>	
+	<a class="btn btn-dark" type="button" th:href="@{/vacinacoes/print/{id}(id=${vacinacao.id})}">Imprimir Relatório</a>				
+	</div>
+			
+	</section>
+</body>
+</html>

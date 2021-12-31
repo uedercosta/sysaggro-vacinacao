@@ -1,7 +1,12 @@
 package br.com.sysagro.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.sysagro.models.Raca;
 import br.com.sysagro.repositories.RacaRepository;
 import br.com.sysagro.util.Constantes;
+import br.com.sysagro.util.ReportsUtil;
+import net.sf.jasperreports.engine.JRException;
 
 @RequestMapping("/racas")
 @Controller
@@ -26,6 +33,8 @@ public class RacaController {
 	
 	@Autowired
 	private RacaRepository repository;
+	@Autowired
+	private ReportsUtil reportsUtil;
 	
 	@GetMapping
 	public ModelAndView findAll(@Nullable Optional<String> txtPesquisa) {	
@@ -71,5 +80,16 @@ public class RacaController {
 		ModelAndView view = new ModelAndView("redirect:/racas");
 		attr.addFlashAttribute("mensagem", Constantes.REGISTRO_EXCLUIDO_SUCESSO);
 		return view; 
+	}
+	
+	@GetMapping("/print")
+	public void imprimir(@Nullable Optional<String> txtPesquisa, HttpServletResponse response) throws JRException, SQLException, IOException {
+		List<Raca> racas = new ArrayList<Raca>();
+		if (txtPesquisa.isPresent()) {
+			racas =  repository.findByDescricaoContaining(txtPesquisa.get().toUpperCase());
+		} else {
+			racas = repository.findAll();
+		}
+		reportsUtil.imprimir(response, racas, "reportRacas");
 	}
 }

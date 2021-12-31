@@ -19,26 +19,23 @@
 
 		<div class="container-fluid">
 			<form th:action="@{/tipos-vacina}" method="post" th:object="${tipo}">
-			
-				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
-			  		<span  th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}">Registro gravado com sucesso...</span>
+
+				<div class="alert alert-danger" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<div th:each="err : ${#fields.detailedErrors()}">
+						<span th:text="${err.message}">...</span>
+					</div>
 				</div>
-				
+
 				<input type="hidden" th:field="*{id}">
 				<div class="form-group">
-					<label for="txt-descricao">Descrição</label> 
-					<input type="text"
-						   class="form-control md-12 col-12"
-						   th:field="*{descricao}" 
-						   autocomplete="true" 
-						   />
-					</div>
+					<label for="txt-descricao">Descrição</label> <input type="text"
+						class="form-control md-12 col-12" th:field="*{descricao}"
+						autocomplete="true" />
+				</div>
 				<div class="form-group">
-					<input  type="submit" 
-							class="btn btn-success" 
-							value="Salvar">
-					<a th:href="@{/tipos-vacina}" 
-							class="btn btn-danger">Cancelar</a>
+					<input type="submit" class="btn btn-success" value="Salvar">
+					<a th:href="@{/tipos-vacina}" class="btn btn-danger">Cancelar</a>
 				</div>
 			</form>
 		</div>

@@ -20,5 +20,10 @@ public class FuncionarioService {
 		
 	}
 	
+	public List<Funcionario> getFuncionariosImpressao(String nome) {
+		return !nome.isEmpty() ? repository.findByNomeContainingOrderByFazendaId("%"+nome.toUpperCase()+"%") : 
+								repository.findAllOrderByFazendaId();
+		
+	}
 
 }

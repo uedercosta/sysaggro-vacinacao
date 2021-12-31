@@ -26,7 +26,14 @@
 				placeholder="Digite sua pesquisa" aria-label="Digite sua pesquisa">
 			<button class="btn btn-success" type="button" id="btnPesquisa">Pesquisar</button> 
 			<a class="btn btn-primary" type="button" style="margin-left: 10px" th:href="@{/animais/form}">Adicionar</a>
-			<button class="btn btn-dark" type="button" style="margin-left: 10px">Imprimir</button>
+			<div class="dropdown">
+			  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 10px">
+			    Imprimir
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="dropdown-item" id="itemFicha" >Relação de Cadastral</a>
+			  </div>
+			</div>
 		</div>
 		
 		<br />
@@ -44,12 +51,11 @@
 				<tr th:each="animal : ${animais}">	
 					<td th:text="${animal.brinco}">Id</td>
 					<td th:text="${animal.nome}">Descrição</td>
-					<td th:text="${animal.raca.nome}">Descrição</td>
-					<td th:text="${animal.proprietario.nome}">Descrição</td>
+					<td th:text="${animal.raca.descricao}">Descrição</td>
+					<td th:text="${animal.fazenda.proprietario.nome}">Descrição</td>
 					<td>
-						<a class="btn btn-info btn-sm" type="button" style="margin-left: 10px">Detalhes</a>			
-						<a class="btn btn-warning btn-sm" type="button" style="margin-left: 10px" th:href="@{/animais/edit/{id} (id=${animal.id})}">Editar</a>			
-						<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#modal-warning'+${animal.id}" style="margin-left: 10px" >Excluir</a>
+						<a class="btn btn-warning btn-sm" type="button"  th:href="@{/animais/edit/{id} (id=${animal.id})}">Editar</a>			
+						<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#modal-warning'+${animal.id}" >Excluir</a>
 						<div class="modal modal-warning fade in" th:id="modal-warning+${animal.id}" tabindex="-1">
 					    <div class="modal-dialog">
 					        <div class="modal-content">
@@ -67,6 +73,7 @@
 					        </div>
 					    </div>
 					</div>
+					<a type="button" class="btn btn-success btn-sm" th:href="@{/animais/fichaVacina/{id} (id=${animal.id})}">Ficha de Vacinas</a>
 					</td>
 				</tr>
 			</tbody>
@@ -76,6 +83,7 @@
 	<script type="text/javascript">
 		let $_btnPesquisa = $('#btnPesquisa');
 		let $_txtPesquisa = $('#txtPesquisa');
+		
 		function click_handler(event) {
 			event.preventDefault();
 			if ($_txtPesquisa.val() === ""){
@@ -85,6 +93,17 @@
 			}
 		}
 		$_btnPesquisa.on('click', click_handler);
+
+		let $_itemFicha = $('#itemFicha');
+		function relacaoAnimais(e){
+			e.preventDefault();
+			if ($_txtPesquisa.val() === ""){
+				window.location.href = "/animais/print";
+			} else {
+				window.location.href = "/animais/print?txtPesquisa="+ $_txtPesquisa.val();
+			}
+		}
+		$_itemFicha.on('click', relacaoAnimais);
 	</script>
 	</section>
 </body>

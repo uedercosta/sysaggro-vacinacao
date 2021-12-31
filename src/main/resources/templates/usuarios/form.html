@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}" lang="pt">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<section layout:fragment="titulo">
+		<div class="row align-items-md-stretch">
+			<div class="col-md-12">
+				<div class="h-100 p-5 text-white bg-dark rounded-3">
+					<h2>Cadastro de Usuários do Sistema</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section layout:fragment="content">
+
+		<div class="container-fluid">
+			<form th:action="@{/usuarios}" method="post" th:object="${usuario}">
+			
+				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+					<div th:each="err : ${#fields.detailedErrors()}">
+						<span th:text="${err.message}">...</span>
+					</div>
+				</div>
+				
+				<input type="hidden" th:field="*{id}">
+				<div class="row">
+				<div class="form-group md-6 col-6">
+					<label >Nome Completo</label> 
+					<input type="text"
+						   class="form-control "
+						   th:field="*{nome}" 
+						   autocomplete="true" 
+						   />
+					</div>
+				
+				</div>
+				<div class="row">
+				<div class="form-group md-3 col-3">
+					<label >Login</label> 
+					<input type="text"
+						   class="form-control "
+						   th:field="*{login}" 
+						   autocomplete="true" 
+						   />
+					</div>
+
+				<div class="form-group md-3 col-3">
+					<label >Senha</label> 
+					<input type="password"
+						   class="form-control"
+						   th:field="*{senha}" 
+						   autocomplete="true" 
+						   />
+					</div>
+				
+				</div>
+				
+				<div class="row">
+					<div class="form-group md-6 col-6">
+						<label >Perfil</label>
+						<select th:field="*{perfis}" class="form-control ">
+							<option th:each="pf : ${perfis}" th:value="${pf.id}" th:text="${pf.descricao}"/>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<input  type="submit" 
+							class="btn btn-success" 
+							value="Salvar">
+					<a th:href="@{/usuarios}" 
+							class="btn btn-danger">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

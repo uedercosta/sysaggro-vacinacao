@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description"
+	content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+<title>SysAgro</title>
+<link rel="stylesheet" th:href="@{/css/login.css}" />
+<link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
+</head>
+<body>
+	<div id="login">
+		<form class="card" method="post" th:action="@{/login}">
+			<div th:if="${erroLogin!=null}">
+				<div class="card-errors">
+					<span th:text="${erroLogin}">Nome do Usuário ou Senha inválidos...</span>
+				</div>
+			</div>
+<!-- 			<div th:if="${param.logout}">Logout efetuado com sucesso.</div> -->
+			<div class="card-header">
+				<h2>Login do Sistema</h2>
+			</div>
+			<div class="card-content">
+				<div class="card-content-area">
+					<label>Usuário</label> 
+					<input type="text" placeholder="Informe o login do usuário" id="usuario" name="username" required autofocus />
+				</div>
+				<div class="card-content-area">
+					<label>Senha</label> 
+					<input type="password" placeholder="Informe a senha do usuário" id="senha" name="password" required />
+				</div>
+			</div>
+			<div class="card-footer">
+				<input type="submit" value="Login" class="submit" />
+			</div>
+		</form>
+	</div>
+
+</body>
+
+</html>

@@ -1,8 +1,11 @@
 package br.com.sysagro.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,8 @@ import br.com.sysagro.repositories.ProprietarioRepository;
 import br.com.sysagro.services.FazendaService;
 import br.com.sysagro.services.UtilService;
 import br.com.sysagro.util.Constantes;
+import br.com.sysagro.util.ReportsUtil;
+import net.sf.jasperreports.engine.JRException;
 
 @RequestMapping("/fazendas")
 @Controller
@@ -38,6 +43,8 @@ public class FazendaController {
 	private UtilService utilService;
 	@Autowired
 	private ProprietarioRepository propRepository;
+	@Autowired
+	private ReportsUtil reportsUtil;
 	
 	@GetMapping
 	public ModelAndView findAll(@Nullable Optional<String> txtPesquisa) {	
@@ -91,5 +98,11 @@ public class FazendaController {
 		ModelAndView view = new ModelAndView("redirect:/fazendas");
 		attr.addFlashAttribute("mensagem", Constantes.REGISTRO_EXCLUIDO_SUCESSO);
 		return view; 
+	}
+	
+	@GetMapping("/print")
+	public void imprimir(@Nullable Optional<String> txtPesquisa, HttpServletResponse response) throws JRException, SQLException, IOException {
+		List<Fazenda> fazendas = service.getFazendas(txtPesquisa.orElse(""));
+		reportsUtil.imprimir(response, fazendas, "reportFazendas");
 	}
 }

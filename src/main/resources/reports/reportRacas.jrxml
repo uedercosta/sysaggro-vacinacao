@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportRacas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="59f1345e-01ae-4a77-891a-84adbe8234e7">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="zebra" backcolor="#F5F5DC" markup="">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT} % 2 == 0)]]></conditionExpression>
+			<style/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[descricao]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="72" splitType="Stretch">
+			<rectangle radius="0">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="57" backcolor="#D3D3D3" uuid="5ef5fafa-88c4-418e-b5d4-b45c98f28bd9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="14" width="556" height="30" uuid="291b201d-91b0-4e20-89d2-60d4ea0181e3"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relação de Raças de Animais]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="57" width="555" height="15" uuid="d1d84ed6-0a4b-41e9-9daf-b3fa92ad4a0e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="57" width="100" height="14" uuid="b4ef2ee8-cfa3-4569-bf92-04e29dff80d0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="57" width="100" height="14" uuid="d0566ef0-b570-4a88-b3c0-9f40dd8f21aa"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement x="10" y="10" width="41" height="41" uuid="ae31a30c-7b48-444a-ac3a-4dd11bb1e22f"/>
+				<imageExpression><![CDATA["/src/main/resources/static/img/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement style="zebra" x="0" y="0" width="555" height="17" uuid="e86093f8-84d8-4e5f-adf5-e4477dc614f1">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT} % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="76" y="1" width="70" height="15" uuid="1fe40d41-29f0-4b30-847b-fd61eaff5a99">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="1" width="70" height="15" uuid="6d6cf658-c994-423c-bf7d-f10233ac3d37">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="16" uuid="2fac5586-8922-43a5-87dc-3b6410e3b850"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="5" y="1" width="290" height="15" uuid="43756449-8c97-4f51-b06c-f094972c63d3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[SysAgro - Sistema de Gestão de Agropecuária]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement x="371" y="1" width="183" height="15" uuid="244eadb5-5bf2-4a05-a9fb-0691db9e2cde">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Data/Hora: " + new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="554" height="14" uuid="4535cc64-f604-40e7-84fe-4b0b1d123850"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

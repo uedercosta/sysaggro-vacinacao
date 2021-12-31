@@ -21,7 +21,8 @@
 			<form th:action="@{/funcionarios}" method="post"
 				th:object="${funcionario}">
 
-				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+				<div class="alert alert-danger" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
 					<div th:each="err : ${#fields.detailedErrors()}">
 						<span th:text="${err.message}">...</span>
 					</div>
@@ -30,99 +31,83 @@
 				<input type="hidden" th:field="*{id}">
 				<div class="row">
 					<div class="form-group md-12 col-12">
-						<label >Nome Completo</label> 
-						<input type="text"
-							   class="form-control" 
-							   autocomplete="true" 
-							   th:field="*{nome}"/>
+						<label>Nome Completo</label> <input type="text"
+							class="form-control" autocomplete="true" th:field="*{nome}" />
 
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group md-10 col-10">
-						<label >Logradouro</label> 
-						<input type="text"
-								class="form-control" 
-								autocomplete="true" 
-								th:field="*{endereco.logradouro}"/>
+						<label>Logradouro</label> <input type="text" class="form-control"
+							autocomplete="true" th:field="*{endereco.logradouro}" />
 
 					</div>
 					<div class="form-group md-2 col-2">
-						<label >Número</label> 
-						<input type="text"
-							th:field="*{endereco.numero}"
-							class="form-control" 
+						<label>Número</label> <input type="text"
+							th:field="*{endereco.numero}" class="form-control"
 							autocomplete="true" />
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="form-group md-6 col-6">
-						<label >Complemento</label> 
-						<input type="text"
-								th:field="*{endereco.complemento}"
-								class="form-control" autocomplete="true" />
-	
+						<label>Complemento</label> <input type="text"
+							th:field="*{endereco.complemento}" class="form-control"
+							autocomplete="true" />
+
 					</div>
 					<div class="form-group md-6 col-6">
-						<label >Bairro</label> 
-						<input type="text"
-								th:field="*{endereco.bairro}"
-								class="form-control" autocomplete="true" />
+						<label>Bairro</label> <input type="text"
+							th:field="*{endereco.bairro}" class="form-control"
+							autocomplete="true" />
 
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="form-group md-4 col-4">
-						<label for="txt-nome">Cidade</label> 
-						<input  type="text"
-								th:field="*{endereco.cidade}"
-								class="form-control" 
-								autocomplete="true" />
+						<label for="txt-nome">Cidade</label> <input type="text"
+							th:field="*{endereco.cidade}" class="form-control"
+							autocomplete="true" />
 
 					</div>
 					<div class="form-group md-2 col-2">
-						<label for="txt-nome">Estado</label> 
-						<select class="form-control" th:field="*{endereco.estado}">
-							<option th:each="estado : ${estados}" th:text="${estado}" th:value="${estado}"/>
+						<label for="txt-nome">Estado</label> <select class="form-control"
+							th:field="*{endereco.estado}">
+							<option th:each="estado : ${estados}" th:text="${estado}"
+								th:value="${estado}" />
 						</select>
 					</div>
 					<div class="form-group md-3 col-3">
-						<label for="txt-nome">CPF</label> 
-						<input type="text"
-								th:field="*{cpf}"
-								id="cpf" name="cpf" class="form-control" autocomplete="true" />
+						<label for="txt-nome">CPF</label> <input type="text"
+							th:field="*{cpf}" id="cpf" name="cpf" class="form-control"
+							autocomplete="true" />
 
 					</div>
 					<div class="form-group md-3 col-3">
-						<label for="txt-nome">Telefone</label> 
-						<input type="text" 
-								th:field="*{telefone}"
-								class="form-control" autocomplete="true" 
-							   	id="telefone" name="telefone"/>
-						
+						<label for="txt-nome">Telefone</label> <input type="text"
+							th:field="*{telefone}" class="form-control" autocomplete="true"
+							id="telefone" name="telefone" />
+
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="form-group md-12 col-12">
-						<label for="txt-nome">Fazendas</label> 
-						<select class="form-control" th:field="*{fazenda}">
-							<option th:each="faz : ${fazendas}" th:text="${faz.nome}" th:value="${faz.id}"/>
+						<label for="txt-nome">Fazendas</label> <select
+							class="form-control" th:field="*{fazenda}">
+							<option th:each="faz : ${fazendas}" th:text="${faz.nome}"
+								th:value="${faz.id}" />
 						</select>
 					</div>
 				</div>
-					<div class="row">
+				<div class="row">
 					<div class="form-group md-12 col-12">
-						<label for="txt-nome">Observações</label> 
-						<textarea 
-							rows="2"
-							th:field="*{observacoes}"
-							class="form-control" ></textarea>
+						<label for="txt-nome">Observações</label>
+						<textarea rows="2" th:field="*{observacoes}" class="form-control"></textarea>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<input type="submit" class="btn btn-success" value="Salvar">
 					<a th:href="@{/funcionarios}" class="btn btn-danger">Cancelar</a>

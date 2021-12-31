@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}" lang="pt">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<section layout:fragment="titulo">
+		<div class="row align-items-md-stretch">
+			<div class="col-md-12">
+				<div class="h-100 p-5 text-white bg-dark rounded-3">
+					<h2>Lançamento da Vacinação de Animais</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section layout:fragment="content">
+
+		<div class="container-fluid">
+			<form th:action="@{/vacinacoes}" method="post" th:object="${vacinacao}" >
+			
+				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+					<div th:each="err : ${#fields.detailedErrors()}">
+						<span th:text="${err.message}">...</span>
+					</div>
+				</div>
+				
+				<input type="hidden" th:field="*{id}" >
+				<div class="row">
+					<div class="form-group md-8 col-8">
+						<label>Descrição</label> 
+						<input type="text"
+						   class="form-control"
+						   autocomplete="true"
+						   th:field="*{descricao}" 
+						   />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group  md-2 col-2">
+						<label >Ano</label> 
+						<input type="number"
+						   class="form-control"
+						   autocomplete="true" 
+						   th:field="*{ano}"
+						   />
+					</div>
+					<div class="form-group  md-3 col-3">
+						<label>Data</label> 
+						<input type="date"
+						   class="form-control"
+							th:field="*{dataVacinacao}"		 
+						   />
+					</div>
+					<div class="form-group  md-3 col-3">
+						<label >Status</label> 
+						<input type="text"
+						   class="form-control"
+						   readonly
+						   th:field="*{status.descricao}"
+						   />
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group  md-8 col-8">
+						<label for="txt-descricao">Vacina</label> 
+						<select class="form-control" th:field="*{vacina}" >
+							<option th:each="vacina : ${vacinas}" th:text="${vacina.descricao}" th:value="${vacina.id}" >Selecione um status...</option>  
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group  md-8 col-8">
+						<label for="txt-descricao">Fazenda</label> 
+						<select class="form-control" th:field="*{fazenda}">
+							<option th:each="faz : ${fazendas}" th:text="${faz.nome}" th:value="${faz.id}" >Selecione um status...</option> 
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group  md-12 col-12">
+						<label >Observações</label> 
+						<textarea class="form-control" 
+							rows="3" 
+							th:field="*{observacao}">
+							
+						</textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<input  type="submit" 
+							class="btn btn-success" 
+							value="Salvar">
+					<a th:href="@{/vacinacoes}" 
+							class="btn btn-danger">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

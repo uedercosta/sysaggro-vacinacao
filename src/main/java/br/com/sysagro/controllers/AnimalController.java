@@ -1,9 +1,12 @@
 package br.com.sysagro.controllers;
 
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +18,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.sysagro.dto.AnimalDTO;
 import br.com.sysagro.models.Animal;
 import br.com.sysagro.models.Fazenda;
 import br.com.sysagro.models.Proprietario;
@@ -31,6 +37,8 @@ import br.com.sysagro.repositories.RacaRepository;
 import br.com.sysagro.services.AnimalService;
 import br.com.sysagro.services.UtilService;
 import br.com.sysagro.util.Constantes;
+import br.com.sysagro.util.ReportsUtil;
+import net.sf.jasperreports.engine.JRException;
 
 @RequestMapping("/animais")
 @Controller
@@ -48,6 +56,8 @@ public class AnimalController {
 	private FazendaRepository fazendaRepository;
 	@Autowired
 	private UtilService utilService;
+	@Autowired
+	private ReportsUtil report;
 	
 	@GetMapping
 	public ModelAndView findAll(@Nullable Optional<String> txtPesquisa) {	
@@ -114,5 +124,34 @@ public class AnimalController {
 	@ModelAttribute("sexos")
 	public List<Sexo> getSexos(){
 		return utilService.getSexos();
+	}
+	
+	@ModelAttribute("pais")
+	public List<Animal> getPais(){
+		return animalService.getAllMachos();
+	}
+	
+	
+	@ModelAttribute("maes")
+	public List<Animal> getMaes(){
+		return animalService.getAllFemeas();
+	}
+	
+	@ResponseBody
+	@GetMapping("buscarNome")
+	public List<AnimalDTO> listaAnimal(@RequestParam("nome") String nome){
+		return animalService.getAnimaisDTO(nome);
+	}
+	
+	@GetMapping("print")
+	public void printRelacaoAnimais(HttpServletResponse response, @Nullable Optional<String> txtPesquisa) throws JRException, SQLException, IOException {
+		List<Animal> animais = animalService.getAnimais(txtPesquisa.orElse(""));
+		report.imprimir(response, animais, "reportRelacaoAnimais");
+	}
+
+	@GetMapping("printVacinas")
+	public void printRelacaoVacinas(HttpServletResponse response, @Nullable Optional<String> txtPesquisa) throws JRException, SQLException, IOException {
+		List<Animal> animais = animalService.getAnimais(txtPesquisa.orElse(""));
+		report.imprimir(response, animais, "reportRelacaoAnimaisVacinados");
 	}
 }

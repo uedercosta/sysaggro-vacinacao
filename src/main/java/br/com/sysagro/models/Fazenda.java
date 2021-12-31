@@ -87,7 +87,8 @@ public class Fazenda implements Serializable{
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes.toUpperCase();
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "Fazenda [id=" + id + ", nome=" + nome + ", proprietario=" + proprietario + ", tamanho=" + tamanho

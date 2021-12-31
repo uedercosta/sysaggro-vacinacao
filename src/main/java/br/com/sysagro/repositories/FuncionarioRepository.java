@@ -15,4 +15,9 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	@Query("SELECT f FROM Funcionario f join fetch f.fazenda order by f.id")
 	List<Funcionario> findAll();
 
+	@Query("SELECT f FROM Funcionario f join fetch f.fazenda fa where f.nome like :nome order by fa.id")
+	List<Funcionario> findByNomeContainingOrderByFazendaId(String nome);
+	
+	@Query("SELECT f FROM Funcionario f join fetch f.fazenda fa order by fa.id")
+	List<Funcionario> findAllOrderByFazendaId();
 }

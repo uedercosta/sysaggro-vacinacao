@@ -1,8 +1,11 @@
 package br.com.sysagro.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,8 @@ import br.com.sysagro.repositories.ProprietarioRepository;
 import br.com.sysagro.services.ProprietarioService;
 import br.com.sysagro.services.UtilService;
 import br.com.sysagro.util.Constantes;
+import br.com.sysagro.util.ReportsUtil;
+import net.sf.jasperreports.engine.JRException;
 
 @RequestMapping("/proprietarios")
 @Controller
@@ -34,6 +39,8 @@ public class ProprietarioController {
 	private ProprietarioService service;
 	@Autowired
 	private UtilService utilService;
+	@Autowired
+	private ReportsUtil reports;
 	
 	@GetMapping
 	public ModelAndView findAll(@Nullable Optional<String> txtPesquisa) {	
@@ -81,4 +88,12 @@ public class ProprietarioController {
 	public List<Estado> getEstados(){
 		return utilService.getEstados();
 	}
+	
+	@GetMapping("print")
+	public void print(HttpServletResponse response,@Nullable Optional<String> txtPesquisa) throws JRException, SQLException, IOException {	
+		List<Proprietario> proprietarios = service.getProprietarios(txtPesquisa.orElse(""));
+		reports.imprimir(response, proprietarios, "reportProprietarios");
+	}
+	
+
 }

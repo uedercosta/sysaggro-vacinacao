@@ -22,4 +22,8 @@ public class VacinaService {
 		}
 	}
 
+	public List<Vacina> getVacinas() {
+		return repository.findAll();
+	}
+
 }

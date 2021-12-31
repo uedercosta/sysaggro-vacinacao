@@ -26,7 +26,7 @@
 				placeholder="Digite sua pesquisa" aria-label="Digite sua pesquisa">
 			<button class="btn btn-success" type="button" id="btnPesquisa">Pesquisar</button> 
 			<a class="btn btn-primary" type="button" style="margin-left: 10px" th:href="@{/funcionarios/form}">Adicionar</a>
-			<button class="btn btn-dark" type="button" style="margin-left: 10px">Imprimir</button>
+			<button class="btn btn-dark" type="button" style="margin-left: 10px" id="btnImprime">Imprimir</button>
 		</div>
 		
 		<br />
@@ -82,6 +82,17 @@
 			}
 		}
 		$_btnPesquisa.on('click', click_handler);
+
+		let $_btnImp = $('#btnImprime');
+		function imprimir(event){
+			event.preventDefault();
+			if ($_txtPesquisa.val() === ""){
+				window.location.href = "/funcionarios/print";
+			} else {
+				window.location.href = "/funcionarios/print?txtPesquisa="+ $_txtPesquisa.val();
+			}
+		}
+		$_btnImp.on('click', imprimir);
 	</script>
 	</section>
 </body>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProprietarios" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b17a9655-4542-491c-8bc5-dedd9d20d54d">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="observacoes" class="java.lang.String">
+		<fieldDescription><![CDATA[observacoes]]></fieldDescription>
+	</field>
+	<field name="tamanho" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[tamanho]]></fieldDescription>
+	</field>
+	<field name="endereco" class="br.com.sysagro.models.Endereco">
+		<fieldDescription><![CDATA[endereco]]></fieldDescription>
+	</field>
+	<field name="proprietario" class="br.com.sysagro.models.Proprietario">
+		<fieldDescription><![CDATA[proprietario]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[nome]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="50" backcolor="#D3D3D3" uuid="813b0197-4efc-4723-bd2d-94e5c86d9f78"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="10" width="555" height="30" uuid="90dd447b-ec7b-4173-9258-72515c0bae73"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relação de Fazendas e Proprietários]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="50" width="555" height="18" uuid="d40e88d7-93a3-4d0d-a5a5-5b1141ea4d99">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="52" width="100" height="14" uuid="fc2f22e1-685c-429f-a793-9fb3ecc5c2be">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome da Fazenda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="52" width="100" height="14" uuid="5f6899bc-e6b8-4184-bd73-90463295abed">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Área total]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="190" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="15" uuid="2f2421f2-195a-4572-9973-5977261ba552">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="2" y="1" width="428" height="12" uuid="395c2eac-2ac7-4e1f-b221-e46cdb750e95">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="447" y="0" width="90" height="12" uuid="8e0faa4b-f09a-4936-8fd2-067d8988974c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tamanho}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="16" width="555" height="174" uuid="80b861b0-704e-449c-8f05-2aa74f669571"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="16" width="555" height="18" backcolor="#D3D3D3" uuid="476f721f-34a0-44a0-8c3e-d4f509095457">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="17" width="555" height="14" uuid="4350ca16-17fb-475d-8349-fcd541be5bff">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="36" width="58" height="12" uuid="b65783ad-ac71-48d4-a5e0-4a930e1bd8c9">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Logradouro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="36" width="42" height="12" uuid="96985f02-556f-4818-baa1-3d48753a3fb3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="49" width="66" height="12" uuid="c0ac2733-2493-4159-af74-17120f31f7d1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Complemento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="49" width="42" height="12" uuid="399d7d29-ed9c-46cf-9f13-50154bbd1131">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bairro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="63" width="58" height="12" uuid="90261e6f-da56-4657-b9c4-540b9a029744">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cidade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="63" width="42" height="12" uuid="dfa52137-9570-455b-942b-c16bf7776116">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="79" width="555" height="18" backcolor="#D3D3D3" uuid="f3405bd8-019c-48d0-9bee-1e15a4835d20">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="81" width="555" height="14" uuid="5dadfddc-a983-4a74-961e-8be3ef4d6db5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proprietário]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="118" width="555" height="18" uuid="d315a06b-87d1-4860-a51e-9cce8bfed0d5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="120" width="555" height="14" uuid="398d8f16-748d-472e-b30f-ba8ba236d2a0">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Observações:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="36" width="370" height="12" uuid="3bbdee3a-4283-4599-91da-2382240af00d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}.getLogradouro()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="49" width="164" height="12" uuid="89c2a23e-112a-45f9-b196-bfb58416d45c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}.getComplemento()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="63" width="194" height="12" uuid="1cc645ed-96be-42dc-a149-192dd89172c0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}.getCidade()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="101" width="370" height="12" uuid="36063a02-d04e-445e-9cf2-54bec5c7ee24">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proprietario}.getNome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="139" width="548" height="48" uuid="3c87f74e-e84f-4fba-8866-29352079639f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observacoes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="49" width="164" height="12" uuid="51aa11ac-3bda-40de-95eb-0e9b339912a3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}.getBairro()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="63" width="164" height="12" uuid="b987e8fb-e679-4644-bdaf-6452a9f22175">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}.getEstado()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="37" width="59" height="12" uuid="fe052304-e7eb-481e-aa76-a2a48bc22306">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endereco}.getNumero()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="16" uuid="b88c6c1f-d337-4072-aa6f-a0422a386fa5"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="1" width="554" height="14" uuid="850b157f-23b8-4d93-bdc0-f0b793a753f6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement x="371" y="1" width="183" height="15" uuid="8ee509ef-d556-486e-ab5f-081784259be4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Data/Hora: " + new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="1" width="290" height="15" uuid="44d52fc0-b7da-4bbe-bddc-204dbb356007">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[SysAgro - Sistema de Gestão de Agropecuária]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
