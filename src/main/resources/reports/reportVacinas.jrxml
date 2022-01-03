@@ -2,6 +2,12 @@
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportVacinas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4b0b469-5a95-4ef6-9166-2fe3e2ed5b79">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($V{COLUMN_COUNT}.intValue() % 2) == 0)]]></conditionExpression>
+			<style backcolor="#FFDEAD"/>
+		</conditionalStyle>
+	</style>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -60,7 +66,7 @@
 	<detail>
 		<band height="15" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="15" uuid="239beba1-320c-4f3f-b262-9403680f3820"/>
+				<reportElement style="Style1" x="0" y="0" width="555" height="15" uuid="239beba1-320c-4f3f-b262-9403680f3820"/>
 			</rectangle>
 			<textField>
 				<reportElement x="5" y="0" width="70" height="15" uuid="fc810d14-14a2-4eb6-b54c-1ed1ba12e266">

@@ -1,7 +1,12 @@
 package br.com.sysagro.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +26,10 @@ import br.com.sysagro.repositories.FazendaRepository;
 import br.com.sysagro.repositories.TransferenciaRepository;
 import br.com.sysagro.services.TransferenciaService;
 import br.com.sysagro.util.Constantes;
+import br.com.sysagro.util.ReportsUtil;
+import net.sf.jasperreports.engine.JRException;
+
+
 
 @Controller
 @RequestMapping("transferencias")
@@ -31,6 +41,8 @@ public class TransferenciaController {
 	private TransferenciaService service;
 	@Autowired
 	private FazendaRepository fazendaRepository;
+	@Autowired
+	private ReportsUtil reports;
 	
 	@GetMapping
 	public ModelAndView findAll() {
@@ -68,5 +80,21 @@ public class TransferenciaController {
 		attr.addFlashAttribute("mensagem", Constantes.REGISTRO_GRAVADO_SUCESSO);
 		return view;
 	}
+	
+	@GetMapping("edit/{id}")
+	public ModelAndView edit(@PathVariable("id") Long id, RedirectAttributes attr){
+		Transferencia tr = repository.findById(id).orElseThrow(()-> new RuntimeException(Constantes.REGISTRO_NAO_ENCONTRADO));
+		ModelAndView view = new ModelAndView("/movimentacoes/form");
+		view.addObject("transferencia", tr);
+		return view;
+	}
+	
+	@GetMapping("print")
+	public void print(HttpServletResponse response) throws JRException, SQLException, IOException {
+		List<Transferencia> movimentacoes = repository.findAll();
+		reports.imprimir(response, movimentacoes , "reportListaMovimentacoes");
+	}
 
+	
+	
 }

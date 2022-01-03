@@ -2,6 +2,12 @@
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportRelatorioVacinacao" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b18b50f-e201-4aac-8b30-6fd69943dc43">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{COLUMN_COUNT}.intValue() % 2 ==0)]]></conditionExpression>
+			<style backcolor="#FFDEAD"/>
+		</conditionalStyle>
+	</style>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -262,7 +268,7 @@
 		<band height="13" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="13" uuid="1e268039-4d9f-429f-adb8-b530769c202a"/>
+				<reportElement style="Style1" x="0" y="0" width="555" height="13" uuid="1e268039-4d9f-429f-adb8-b530769c202a"/>
 			</rectangle>
 			<textField>
 				<reportElement x="2" y="1" width="79" height="12" uuid="8d2e50c6-397d-4894-bfb0-20ebea717c75">
@@ -342,4 +348,29 @@
 			</staticText>
 		</band>
 	</pageFooter>
+	<summary>
+		<band height="74">
+			<rectangle>
+				<reportElement style="Style1" x="0" y="0" width="555" height="13" backcolor="#31A947" uuid="40b6d033-f10e-4a9f-bb9a-13947b1d1abd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="1" width="128" height="12" uuid="bdc56e70-ef73-4daa-87a8-d44df58a6eea">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de Animais Vacinados:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="1" width="142" height="12" uuid="d7f1f148-906c-4960-ac1f-73590bad6a3e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
 </jasperReport>

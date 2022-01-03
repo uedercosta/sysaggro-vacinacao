@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportListaMovimentacoes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e53d925f-522a-45df-a42e-7fe21845e222">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean(($V{COLUMN_COUNT}.intValue() % 2) == 0)]]></conditionExpression>
+			<style backcolor="#FFDEAD"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="motivo" class="java.lang.String">
+		<fieldDescription><![CDATA[motivo]]></fieldDescription>
+	</field>
+	<field name="data" class="java.time.LocalDate">
+		<fieldDescription><![CDATA[data]]></fieldDescription>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<fieldDescription><![CDATA[numero]]></fieldDescription>
+	</field>
+	<field name="origem" class="br.com.sysagro.models.Fazenda">
+		<fieldDescription><![CDATA[origem]]></fieldDescription>
+	</field>
+	<field name="dataConclusao" class="java.time.LocalDate">
+		<fieldDescription><![CDATA[dataConclusao]]></fieldDescription>
+	</field>
+	<field name="destino" class="br.com.sysagro.models.Fazenda">
+		<fieldDescription><![CDATA[destino]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="dataCancelamento" class="java.time.LocalDate">
+		<fieldDescription><![CDATA[dataCancelamento]]></fieldDescription>
+	</field>
+	<field name="status" class="br.com.sysagro.models.enums.StatusTransferencia">
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="65" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="65" backcolor="#D3D3D3" uuid="80ba9b3f-d9c5-4da5-9d06-8fff3d8e5d1f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="8" width="555" height="30" uuid="a61531f2-85c0-4605-b68a-c38c68514673"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relação de Transferências de Animais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="555" height="24" uuid="12cf12cb-b84c-42c6-831d-d56e88e55d56"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Movimentação entre Fazendas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="74" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement style="Style1" x="0" y="0" width="555" height="74" uuid="c77f53e5-d1c4-48d3-93f9-3a6b31e3ece9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="1" width="58" height="12" uuid="6b6cb441-cefc-41a4-9a33-1833decec60e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="1" width="82" height="12" uuid="0dd202d4-1864-42bb-94c7-527b72c84ea7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Transferência:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="13" width="82" height="12" uuid="5b28f1bc-613e-4778-b689-f4818ef2eee6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="13" width="82" height="12" uuid="1bfdf2d8-8a85-446c-b064-cd7e327a738f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Conclusão:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="13" width="82" height="12" uuid="ccde36d4-8102-4fca-b06e-c394fb9ad094">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Cancelamento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="25" width="82" height="12" uuid="97ca84ce-3d18-4945-8ac2-982e16eeb382">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fazenda Origem:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="25" width="82" height="12" uuid="fff761a3-4fc9-45e3-ac95-fff4050d8047">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fazenda Destino:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="37" width="82" height="12" uuid="fab1fecb-981f-4ca6-a6b2-dc13d4b893d6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motivo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="49" width="551" height="22" uuid="41612316-264a-4251-9b88-a79366d55836">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motivo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="1" width="159" height="12" uuid="dbf04c44-d3a6-46d8-85c0-bde19160e1da">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="13" width="159" height="12" uuid="240387eb-2abd-4b31-9db9-7d9d80dce997">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}.getDescricao()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="25" width="130" height="12" uuid="feb98dda-2001-45fe-9b3e-3f003886cf87">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{origem}.getNome()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="286" y="13" width="85" height="12" uuid="f42bb7fc-9ec3-4191-8050-10a4144f401f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataConclusao}.format( java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="25" width="130" height="12" uuid="b191c3fa-66f7-4029-a07a-69a497b929ed">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{destino}.getNome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="1" width="159" height="12" uuid="86c2c35a-1d87-4b81-ab5c-fc768cfdc0aa">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}.format( java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="460" y="13" width="85" height="12" uuid="c9cf4e99-0b13-4802-97ed-3deeaa758091">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataCancelamento}.format( java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="16" uuid="9b9067a5-19f2-415b-a84b-01c8cb48f6a7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="5" y="1" width="290" height="15" uuid="f372e27c-bb1c-4a10-8452-399568e5f71c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[SysAgro - Sistema de Gestão de Agropecuária]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement x="371" y="1" width="183" height="15" uuid="b7714cfa-3a47-43b1-8438-72b5aedb137c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Data/Hora: " + new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="554" height="14" uuid="e8daf54d-314b-4834-a936-cbcd3fc742d4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
